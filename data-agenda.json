@@ -1,0 +1,53 @@
+{
+  "last_updated": "2026-06-12T03:00:00",
+  "agenda": {
+    "172/PUU-XXIV/2026": {
+      "agenda_terakhir": "Pemeriksaan Pendahuluan (I)",
+      "tgl_terakhir": "06-03-2026",
+      "agenda_selanjutnya": "Perbaikan Permohonan (II)",
+      "tgl_selanjutnya": "17-06-2026"
+    },
+    "143/PUU-XXIV/2026": {
+      "agenda_terakhir": "Mendengar Keterangan DPR dan Presiden (III)",
+      "tgl_terakhir": "06-09-2026",
+      "agenda_selanjutnya": "Mendengar Keterangan Ahli dan/atau Saksi Pemohon (IV)",
+      "tgl_selanjutnya": "23-06-2026"
+    },
+    "197/PUU-XXIII/2025": {
+      "agenda_terakhir": "Mendengar Keterangan Ahli yang dihadirkan Mahkamah (X)",
+      "tgl_terakhir": "26-05-2026",
+      "agenda_selanjutnya": "Pemeriksaan Persidangan",
+      "tgl_selanjutnya": "Belum dijadwalkan"
+    },
+    "260/PUU-XXIII/2025": {
+      "agenda_terakhir": "Mendengar Keterangan Saksi Pemohon serta Ahli dan Saksi Presiden (VII)",
+      "tgl_terakhir": "28-04-2026",
+      "agenda_selanjutnya": "Pemeriksaan Persidangan",
+      "tgl_selanjutnya": "Belum dijadwalkan"
+    },
+    "139/PUU-XXIII/2025": {
+      "agenda_terakhir": "Mendengar Keterangan Ahli/Saksi Presiden (IX)",
+      "tgl_terakhir": "15-12-2025",
+      "agenda_selanjutnya": "Pemeriksaan Persidangan",
+      "tgl_selanjutnya": "Belum dijadwalkan"
+    },
+    "160/PUU-XXIII/2025": {
+      "agenda_terakhir": "Mendengar Keterangan Ahli dan Saksi Presiden (IX)",
+      "tgl_terakhir": "01-12-2026",
+      "agenda_selanjutnya": "Pemeriksaan Persidangan",
+      "tgl_selanjutnya": "Belum dijadwalkan"
+    },
+    "34/PUU-XXIV/2026": {
+      "agenda_terakhir": "Mendengar Keterangan Ahli/Saksi Presiden (VI)",
+      "tgl_terakhir": "13-05-2026",
+      "agenda_selanjutnya": "Pemeriksaan Persidangan",
+      "tgl_selanjutnya": "Belum dijadwalkan"
+    },
+    "153/PUU-XXIV/2026": {
+      "agenda_terakhir": "Perbaikan Permohonan (II)",
+      "tgl_terakhir": "20-05-2026",
+      "agenda_selanjutnya": "Pemeriksaan Persidangan",
+      "tgl_selanjutnya": "Belum dijadwalkan"
+    }
+  }
+}

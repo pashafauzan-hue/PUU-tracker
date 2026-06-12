@@ -1,0 +1,188 @@
+{
+  "meta": {
+    "terakhir_dikurasi": "2026-06-12",
+    "kurator": "Tim Pemantau"
+  },
+  "perkara": [
+    {
+      "id": "172/PUU-XXIV/2026",
+      "kluster": "Lintas",
+      "uu": "UU No. 17 Tahun 2023 tentang Kesehatan",
+      "jenis": "Materiil",
+      "pemohon": "Drs. Dharma Pongrekun, M.M., M.H.",
+      "batu_uji": "Pasal 1(3), 28A, 28D(1), 28F, 28G(1), 28H(1), 28I(1)(2) UUD 1945",
+      "featured": false,
+      "ringkasan": "Pemohon menguji pasal-pasal dalam UU Kesehatan yang mengatur penanggulangan KLB dan Wabah. Inti persoalan adalah kewenangan Menteri menetapkan kriteria KLB secara sepihak tanpa standar ilmiah yang jelas, serta kewajiban absolut masyarakat mematuhi penanggulangan wabah yang dinilai mengabaikan hak persetujuan tindakan medis. Pemohon meminta agar kriteria KLB hanya dapat ditetapkan setelah kajian bersama lembaga ilmiah dan diumumkan secara transparan.",
+      "objek_petitum": [
+        {
+          "pasal": "Pasal 353 ayat (2) huruf g",
+          "objek_verbatim": "Kriteria KLB sebagaimana dimaksud pada ayat (1) terdiri atas: ... g. Kriteria lain yang ditetapkan oleh Menteri.",
+          "petitum_verbatim": "Dimaknai: 'kriteria lain yang ditetapkan oleh Menteri setelah dilakukan kajian bersama dengan Konsil dan Kolegium dan harus didasarkan pada bukti ilmiah yang kuat serta harus diumumkan secara transparan kepada publik.'",
+          "ringkasan_norma": "Kriteria KLB yang bisa ditetapkan Menteri secara sepihak dinilai terlalu luas dan tidak berbasis standar ilmiah."
+        },
+        {
+          "pasal": "Pasal 394",
+          "objek_verbatim": "Setiap Orang wajib mematuhi semua kegiatan penanggulangan KLB dan Wabah yang dilaksanakan oleh Pemerintah Pusat dan Pemerintah Daerah.",
+          "petitum_verbatim": "Dimaknai: 'Setiap orang memiliki hak dan/atau kewajiban dalam penyelenggaraan kegiatan penanggulangan KLB dan Wabah, dengan tetap menghormati hak atas persetujuan tindakan medis dan hak asasi manusia sesuai dengan ketentuan peraturan perundang-undangan.'",
+          "ringkasan_norma": "Kewajiban absolut mematuhi tanpa pengecualian dinilai mengabaikan hak informed consent dalam tindakan medis."
+        },
+        {
+          "pasal": "Pasal 400",
+          "objek_verbatim": "Setiap Orang dilarang menghalang-halangi pelaksanaan upaya penanggulangan KLB dan Wabah.",
+          "petitum_verbatim": "Bertentangan dengan UUD 1945 dan tidak memiliki kekuatan hukum mengikat.",
+          "ringkasan_norma": "Larangan tanpa pengecualian dinilai terlalu luas dan berpotensi mengkriminalisasi pihak yang sekadar berbeda pendapat ilmiah."
+        }
+      ]
+    },
+    {
+      "id": "143/PUU-XXIV/2026",
+      "kluster": "Lintas",
+      "uu": "UU No. 24 Tahun 2000 tentang Perjanjian Internasional",
+      "jenis": "Materiil",
+      "pemohon": "MAKI (H. Boyamin, S.H.), LP3HI (H. Arif Sahudi), Rus Utaryono, Tresno Subagyo",
+      "batu_uji": "Pembukaan UUD Alinea 4; Pasal 1(2)(3), 11(2), 28C(2), 28D(1), 28G(1) UUD 1945",
+      "featured": true,
+      "ringkasan": "Pemohon mempersoalkan tidak adanya batas waktu pengesahan perjanjian internasional melalui UU. Tanpa batas waktu, pemerintah dapat menunda ratifikasi secara tidak terbatas sehingga DPR tidak dapat mengawasi substansi perjanjian. Pemohon meminta agar pengesahan wajib dilakukan paling lambat 3 bulan sejak perjanjian ditandatangani demi menjamin kedaulatan rakyat dan kepastian hukum.",
+      "objek_petitum": [
+        {
+          "pasal": "Pasal 10",
+          "objek_verbatim": "Pengesahan perjanjian internasional dilakukan dengan undang-undang apabila berkenaan dengan: a. masalah politik, perdamaian, pertahanan, dan keamanan negara; b. perubahan wilayah atau penetapan batas wilayah negara Republik Indonesia; c. kedaulatan atau hak berdaulat negara; d. hak asasi manusia dan lingkungan hidup; e. pembentukan kaidah hukum baru; f. pinjaman dan/atau hibah luar negeri.",
+          "petitum_verbatim": "Bertentangan dengan UUD NRI 1945 dan tidak mempunyai kekuatan hukum mengikat secara bersyarat (conditionally unconstitutional), sepanjang tidak dimaknai: 'selambat-lambatnya tiga (3) bulan sejak ditandatangani perjanjian aquo.'",
+          "ringkasan_norma": "Tidak ada batas waktu pengesahan membuat DPR tidak dapat efektif mengawasi perjanjian internasional yang mengikat Indonesia."
+        }
+      ]
+    },
+    {
+      "id": "197/PUU-XXIII/2025",
+      "kluster": "Polkam",
+      "uu": "UU No. 34/2004 jo. UU No. 3/2025 tentang TNI",
+      "jenis": "Materiil",
+      "pemohon": "IMPARSIAL, YLBHI, KontraS, AJI Indonesia, LBH APIK Jakarta, Ikhsan Yosarie, Mochamad Adli Wafi, Muhammad Kevin Setio Haryanto",
+      "batu_uji": "Pasal 1(3), 10, 11(1), 20A(1), 24(1)(3), 27(1), 28D(1)(3), 28E(3) UUD 1945",
+      "featured": true,
+      "ringkasan": "Permohonan ini menguji sejumlah ketentuan dalam UU TNI hasil revisi 2025 yang dinilai membuka ruang militerisasi sipil secara sistemik. Tiga isu utama: (1) perluasan jabatan sipil bagi prajurit aktif ke Kejaksaan dan instansi lain di luar fungsi pertahanan; (2) perpanjangan batas usia dinas perwira tinggi hingga 63 tahun dengan mekanisme diskresi Presiden; (3) operasi militer selain perang yang mencakup bantuan 'tugas pemerintahan di daerah' secara terlalu luas. Pemohon adalah gabungan OMS hak asasi manusia dan individu.",
+      "objek_petitum": [
+        {
+          "pasal": "Pasal 47 ayat (1) UU 3/2025",
+          "objek_verbatim": "Prajurit aktif hanya dapat menduduki jabatan pada kantor yang membidangi koordinator bidang Politik dan Keamanan Negara, Pertahanan Negara, Sekretaris Militer Presiden, Intelijen Negara, Sandi Negara, Lembaga Ketahanan Nasional, Dewan Pertahanan Nasional, Badan Search and Rescue (SAR) Nasional, Narkotika Nasional, Kamla, Kesekretariatan Presiden dan, Kejaksaan Republik Indonesia, serta kementerian/lembaga lain yang membutuhkan tenaga dan keahlian prajurit aktif sesuai dengan kebijakan Presiden.",
+          "petitum_verbatim": "Pasal 47 ayat (1) sepanjang frasa 'kesekretariatan presiden dan', 'narkotika nasional', dan 'Kejaksaan Republik Indonesia' bertentangan dengan UUD NRI 1945 dan tidak mempunyai kekuatan hukum mengikat.",
+          "ringkasan_norma": "Frasa 'kebijakan Presiden' membuka jabatan sipil tak terbatas bagi prajurit aktif tanpa kriteria terukur."
+        },
+        {
+          "pasal": "Pasal 53 ayat (2) huruf b-e UU 3/2025",
+          "objek_verbatim": "Batas usia dinas keprajuritan bagi Perwira Tinggi bintang 1 sampai dengan usia paling tinggi 60 tahun; bintang 2 sampai usia paling tinggi 60 tahun; bintang 3 sampai usia paling tinggi 62 tahun; bintang 4 sampai usia paling tinggi 63 tahun.",
+          "petitum_verbatim": "Tidak dimaknai 'Prajurit melaksanakan dinas keprajuritan sampai usia paling tinggi 58 (lima puluh delapan) tahun bagi perwira'.",
+          "ringkasan_norma": "Perpanjangan usia dinas hingga 63 tahun untuk bintang 4 dinilai tidak memiliki justifikasi operasional dan berpotensi menumpuk kekuasaan."
+        },
+        {
+          "pasal": "Pasal 7 ayat (2) huruf b angka 9 UU 3/2025",
+          "objek_verbatim": "Tugas pokok sebagaimana dimaksud pada ayat (1) dilakukan dengan: b. operasi militer selain perang, yaitu untuk: 9. membantu tugas pemerintahan di daerah.",
+          "petitum_verbatim": "Dimaknai 'adalah membantu pelaksanaan fungsi Pemerintah dalam situasi dan kondisi yang memerlukan sarana, alat, dan kemampuan TNI untuk menyelesaikan permasalahan yang sedang dihadapi, antara lain membantu mengatasi akibat bencana alam dan merehabilitasi infrastruktur'.",
+          "ringkasan_norma": "Frasa 'membantu tugas pemerintahan' tanpa batasan membuka celah penggunaan TNI untuk fungsi sipil non-darurat."
+        }
+      ]
+    },
+    {
+      "id": "260/PUU-XXIII/2025",
+      "kluster": "Polkam",
+      "uu": "UU No. 31 Tahun 1997 tentang Peradilan Militer",
+      "jenis": "Materiil",
+      "pemohon": "Lenny Damanik (I), Eva Meliani Br Pasaribu (II)",
+      "batu_uji": "Pasal 1(3), 24(1), 27(1), 28D(1) UUD 1945",
+      "featured": false,
+      "ringkasan": "Kedua pemohon adalah keluarga korban kekerasan yang melibatkan anggota TNI. Mereka mempersoalkan sistem peradilan militer yang menutup akses keadilan bagi korban sipil karena semua tindak pidana oleh prajurit — termasuk yang merugikan warga sipil — diadili di peradilan militer. Pemohon meminta agar yurisdiksi militer dibatasi hanya pada tindak pidana militer murni.",
+      "objek_petitum": [
+        {
+          "pasal": "Pasal 9 ayat (1)",
+          "objek_verbatim": "Pengadilan dalam lingkungan peradilan militer berwenang: 1. Mengadili tindak pidana yang dilakukan oleh seseorang yang pada waktu melakukan tindak pidana adalah: a. Prajurit; b. yang berdasarkan undang-undang dipersamakan dengan Prajurit; c. anggota suatu golongan atau badan atau yang dipersamakan atau dianggap sebagai Prajurit berdasarkan undang-undang; d. seseorang yang tidak termasuk golongan tersebut pada huruf a, huruf b, dan huruf c tetapi atas keputusan Panglima dengan persetujuan Menteri Kehakiman harus diadili oleh suatu Pengadilan dalam lingkungan peradilan militer.",
+          "petitum_verbatim": "Pasal 9 ayat (1) dimaknai 'Pengadilan dalam lingkungan Peradilan Militer berwenang mengadili tindak pidana militer yang dilakukan oleh seseorang yang pada waktu melakukan tindak pidana adalah Prajurit' — tidak mencakup kejahatan umum yang melibatkan korban warga sipil.",
+          "ringkasan_norma": "Yurisdiksi militer yang tidak dibatasi pada 'tindak pidana militer' menutup akses keadilan korban sipil dari anggota TNI."
+        }
+      ]
+    },
+    {
+      "id": "139/PUU-XXIII/2025",
+      "kluster": "Ekopol",
+      "uu": "UU No. 4 Tahun 2023 tentang Pengembangan dan Penguatan Sektor Keuangan (Dana Pensiun)",
+      "jenis": "Materiil",
+      "pemohon": "Alfonsius Londoran, Nurman, Abdul Rahman (Perkara I); Lukas Saleo, Warjito, Haeruddin Fallah, dkk. (Perkara II)",
+      "batu_uji": "Pasal 28D(2), 28H(4), 28C(1), 27(2) UUD 1945",
+      "featured": false,
+      "ringkasan": "Pemohon adalah pensiunan yang dirugikan oleh ketentuan pembayaran manfaat pensiun yang hanya boleh diberikan secara berkala, atau jika sekaligus dibatasi maksimal 20%. Mereka menilai pembatasan ini melanggar hak atas imbalan yang layak karena peserta tidak diberi kebebasan memilih cara penerimaan manfaat yang menjadi haknya sendiri.",
+      "objek_petitum": [
+        {
+          "pasal": "Pasal 161 ayat (2)",
+          "objek_verbatim": "Pembayaran Manfaat Pensiun bagi Peserta, Janda/Duda, atau anak harus dilakukan secara berkala.",
+          "petitum_verbatim": "Dimaknai: 'Pembayaran Manfaat Pensiun bagi Peserta, Janda/Duda, atau anak dalam program pensiun swasta yang bersifat pelengkap (complement) dapat dilakukan secara berkala atau sekaligus berdasarkan pilihan Peserta, Janda/Duda, atau anak'.",
+          "ringkasan_norma": "Kewajiban pembayaran berkala tanpa opsi sekaligus mengabaikan otonomi peserta atas manfaat yang merupakan hasil kontribusi mereka sendiri."
+        },
+        {
+          "pasal": "Pasal 164 ayat (2)",
+          "objek_verbatim": "Peraturan Dana Pensiun dapat memuat ketentuan yang mengatur pilihan pembayaran Manfaat Pensiun pertama kali secara sekaligus paling banyak 20% (dua puluh persen) dari Manfaat Pensiun.",
+          "petitum_verbatim": "Dimaknai: 'Peraturan Dana Pensiun dapat memuat ketentuan yang mengatur pilihan pembayaran Manfaat Pensiun secara sekaligus sebanyak 100% (seratus persen) dari Manfaat Pensiun.'",
+          "ringkasan_norma": "Batas 20% untuk pencairan sekaligus dinilai sewenang-wenang dan tidak memiliki justifikasi proporsional."
+        }
+      ]
+    },
+    {
+      "id": "160/PUU-XXIII/2025",
+      "kluster": "Ekopol",
+      "uu": "UU No. 2 Tahun 2025 tentang Pertambangan Mineral dan Batubara",
+      "jenis": "Materiil",
+      "pemohon": "Abdullah Faqih, Pendi, Abdullah, Iqro' Katsir, Alif Alvian Mawaddi Hamid",
+      "batu_uji": "Pasal 33(1)(2)(3)(4), 28C(1), 28D(1)(2), 28H(1) UUD 1945",
+      "featured": true,
+      "ringkasan": "Pemohon menguji ketentuan UU Minerba 2025 yang membuka pemberian izin usaha pertambangan (WIUP) kepada swasta murni melalui mekanisme lelang atau prioritas, tanpa mewajibkan kontrol negara melalui BUMN. Pemohon berargumen bahwa sumber daya alam strategis harus dikuasai negara sesuai Pasal 33 UUD 1945, sehingga WIUP seharusnya hanya diberikan kepada BUMN atau perusahaan patungan dengan kepemilikan mayoritas BUMN.",
+      "objek_petitum": [
+        {
+          "pasal": "Pasal 35 ayat (1)",
+          "objek_verbatim": "Usaha Pertambangan dilaksanakan berdasarkan Perizinan Berusaha dari Pemerintah Pusat.",
+          "petitum_verbatim": "Dimaknai: 'Usaha Pertambangan dilaksanakan berdasarkan kerjasama dengan BUMN sebagai perpanjangan tangan dari Negara.'",
+          "ringkasan_norma": "Perizinan tanpa syarat kontrol negara dinilai melepaskan penguasaan negara atas sumber daya alam strategis."
+        },
+        {
+          "pasal": "Pasal 51 ayat (1)",
+          "objek_verbatim": "WIUP Mineral logam diberikan kepada Badan Usaha, koperasi, perusahaan perseorangan, badan usaha kecil dan menengah, atau badan usaha yang dimiliki oleh organisasi kemasyarakatan keagamaan dengan cara lelang atau dengan cara pemberian prioritas.",
+          "petitum_verbatim": "WIUP Mineral logam diberikan kepada BUMN melalui lelang (tanpa cara prioritas); kepemilikan saham mayoritas Perusahaan patungan tetap dimiliki oleh BUMN dengan minimal sebesar 51%.",
+          "ringkasan_norma": "Mekanisme prioritas tanpa batasan kepemilikan negara membuka privatisasi mineral logam strategis secara tidak terkontrol."
+        }
+      ]
+    },
+    {
+      "id": "34/PUU-XXIV/2026",
+      "kluster": "MDG",
+      "uu": "UU No. 37 Tahun 2004 tentang Kepailitan dan Penundaan Kewajiban Pembayaran Utang",
+      "jenis": "Materiil",
+      "pemohon": "Yuli Chandra Dewi",
+      "batu_uji": "Pasal 28D(1), 28G(1), 28H(4) UUD 1945",
+      "featured": false,
+      "ringkasan": "Pemohon adalah istri yang turut dinyatakan pailit karena suaminya memiliki utang dalam konteks persatuan harta perkawinan, meskipun ia tidak mengetahui dan tidak menyetujui utang tersebut. Permohonan ini mempersoalkan ketentuan kepailitan otomatis suami/istri dalam persatuan harta yang dinilai melanggar prinsip keadilan dan perlindungan hak individu.",
+      "objek_petitum": [
+        {
+          "pasal": "Pasal 23",
+          "objek_verbatim": "Debitor Pailit sebagaimana dimaksud dalam Pasal 21 dan Pasal 22 meliputi istri atau suami dari Debitor Pailit yang menikah dalam persatuan harta.",
+          "petitum_verbatim": "Pasal 23 sepanjang frasa 'persatuan harta' dimaknai: 'Utang Suami atau Istri dalam persatuan harta diperlakukan sebagai kepailitan, apabila utang tersebut atas persetujuan kedua belah pihak.'",
+          "ringkasan_norma": "Kepailitan otomatis pasangan dalam persatuan harta tanpa melihat persetujuan individual melanggar prinsip tanggung jawab personal."
+        }
+      ]
+    },
+    {
+      "id": "153/PUU-XXIV/2026",
+      "kluster": "MDG",
+      "uu": "UU No. 27 Tahun 2022 tentang Pelindungan Data Pribadi",
+      "jenis": "Materiil",
+      "pemohon": "Pardamean Sihombing (I), Eprina Manurung (II), Christian Adrianus Sihite (III), Matthew Hutasoit (IV)",
+      "batu_uji": "Pasal 1(3), 28D(1) UUD 1945",
+      "featured": false,
+      "ringkasan": "Pemohon mempersoalkan tidak dibentuknya lembaga pengawas pelindungan data pribadi yang independen sebagaimana diamanatkan UU PDP. Meskipun UU PDP telah berlaku, Peraturan Presiden yang harusnya membentuk lembaga tersebut belum terbit, sehingga penegakan hak atas data pribadi tidak memiliki otoritas yang berwenang. Pemohon meminta MK memberi batas waktu 2 tahun.",
+      "objek_petitum": [
+        {
+          "pasal": "Pasal 58 ayat (5)",
+          "objek_verbatim": "Ketentuan lebih lanjut mengenai lembaga sebagaimana dimaksud pada ayat (2) diatur dengan Peraturan Presiden.",
+          "petitum_verbatim": "Dimaknai: 'Ketentuan lebih lanjut mengenai lembaga sebagaimana dimaksud pada ayat (2) harus dibentuk dan diatur dengan Peraturan Presiden dalam jangka waktu paling lama 2 (dua) tahun sejak putusan a quo diucapkan.'",
+          "ringkasan_norma": "Tanpa batas waktu pembentukan, lembaga pengawas data pribadi dapat terus ditunda tanpa konsekuensi hukum."
+        }
+      ]
+    }
+  ]
+}

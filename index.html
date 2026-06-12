@@ -1,0 +1,622 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Pemantau Perkara MK</title>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@3.19.0/dist/tabler-icons.min.css">
+<style>
+:root {
+  --bg:       #ffffff;
+  --bg2:      #f7f7f5;
+  --bg3:      #f0efe8;
+  --text:     #1a1a1a;
+  --text2:    #6b6a63;
+  --text3:    #a09e97;
+  --border:   rgba(0,0,0,.1);
+  --border2:  rgba(0,0,0,.18);
+  --blue50:   #E6F1FB; --blue400: #378ADD; --blue800: #0C447C;
+  --amber50:  #FAEEDA; --amber400:#BA7517; --amber800:#633806;
+  --green50:  #EAF3DE; --green400: #639922; --green800: #27500A;
+  --purple50: #EEEDFE; --purple400:#7F77DD; --purple800:#3C3489;
+  --red50:    #FCEBEB; --red400:   #E24B4A; --red800:   #791F1F;
+  --r-md: 8px; --r-lg: 12px; --r-xl: 16px;
+}
+@media (prefers-color-scheme: dark) {
+  :root {
+    --bg: #1c1c1a; --bg2: #252523; --bg3: #2e2e2b;
+    --text: #e8e6df; --text2: #9c9a93; --text3: #686660;
+    --border: rgba(255,255,255,.08); --border2: rgba(255,255,255,.15);
+    --blue50: #0c2a42; --blue800: #85B7EB;
+    --amber50:#2e1f05; --amber800:#FAC775;
+    --green50:#152508; --green800:#C0DD97;
+    --purple50:#1c1a38; --purple800:#AFA9EC;
+    --red50: #2e0f0f; --red800: #F09595;
+  }
+}
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;background:var(--bg3);color:var(--text);font-size:14px;line-height:1.5}
+a{color:var(--blue400);text-decoration:none}
+button{font-family:inherit;cursor:pointer}
+
+.shell{max-width:860px;margin:0 auto;padding:1.5rem 1rem 4rem}
+
+/* ── topbar ── */
+.topbar{display:flex;align-items:center;justify-content:space-between;margin-bottom:1.5rem;flex-wrap:wrap;gap:10px}
+.brand{display:flex;align-items:center;gap:10px}
+.brand-icon{width:34px;height:34px;border-radius:var(--r-md);background:var(--bg2);border:1px solid var(--border2);display:flex;align-items:center;justify-content:center;font-size:18px;color:var(--text)}
+.brand-name{font-size:15px;font-weight:600;color:var(--text)}
+.brand-sub{font-size:11px;color:var(--text3);margin-top:1px}
+.upd-chip{font-size:11px;color:var(--text3);background:var(--bg2);border:1px solid var(--border);padding:3px 9px;border-radius:20px;display:flex;align-items:center;gap:4px}
+
+/* ── nav ── */
+.mainnav{display:flex;gap:2px;border-bottom:1px solid var(--border);margin-bottom:1.25rem}
+.mnav{padding:7px 14px;font-size:13px;color:var(--text2);background:none;border:none;border-bottom:2px solid transparent;margin-bottom:-1px;display:flex;align-items:center;gap:5px;transition:color .12s}
+.mnav.on{color:var(--text);font-weight:600;border-bottom-color:var(--text)}
+.mnav:hover:not(.on){color:var(--text);background:var(--bg2)}
+.nc{min-width:17px;height:17px;border-radius:9px;font-size:10px;font-weight:600;padding:0 4px;display:inline-flex;align-items:center;justify-content:center}
+.nc-w{background:var(--amber50);color:var(--amber800)}
+.nc-p{background:var(--blue50);color:var(--blue800)}
+
+/* ── pages ── */
+.page{display:none}.page.on{display:block}
+
+/* ── alert strip ── */
+.alert-strip{margin-bottom:1rem}
+.a-row{display:flex;align-items:center;gap:10px;padding:8px 12px;border-radius:var(--r-md);margin-bottom:5px;cursor:pointer;border:1px solid;transition:opacity .12s}
+.a-row:hover{opacity:.82}
+.a-hot{border-color:#E24B4A;background:var(--red50)}
+.a-warm{border-color:#BA7517;background:var(--amber50)}
+.a-nomor{font-size:12px;font-weight:600;min-width:150px}
+.a-hot .a-nomor{color:var(--red800)}
+.a-warm .a-nomor{color:var(--amber800)}
+.a-info{flex:1;font-size:12px;color:var(--text2);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.a-prog{width:70px}
+.a-bg{height:3px;background:var(--border);border-radius:2px;overflow:hidden}
+.a-fill-hot{height:100%;border-radius:2px;background:#E24B4A}
+.a-fill-warm{height:100%;border-radius:2px;background:#BA7517}
+.a-days{font-size:11px;font-weight:600;min-width:50px;text-align:right}
+.a-hot .a-days{color:var(--red800)}
+.a-warm .a-days{color:var(--amber800)}
+
+/* ── stats ── */
+.statsrow{display:grid;grid-template-columns:repeat(auto-fit,minmax(100px,1fr));gap:8px;margin-bottom:1rem}
+.sc{background:var(--bg2);border-radius:var(--r-md);padding:10px 12px;border:1px solid var(--border)}
+.sc-v{font-size:22px;font-weight:600;color:var(--text)}
+.sc-l{font-size:11px;color:var(--text2);margin-top:1px}
+
+/* ── filters ── */
+.filterrow{display:flex;gap:8px;margin-bottom:1rem;flex-wrap:wrap;align-items:center}
+.filterrow input,.filterrow select{font-family:inherit;font-size:13px;padding:6px 10px;border-radius:var(--r-md);border:1px solid var(--border2);background:var(--bg);color:var(--text);outline:none}
+.filterrow input{flex:1;min-width:140px}
+.filterrow input:focus,.filterrow select:focus{border-color:var(--blue400)}
+.kpills{display:flex;gap:4px;flex-wrap:wrap}
+.kp{padding:4px 11px;font-size:12px;border-radius:20px;border:1px solid var(--border2);background:transparent;color:var(--text2);transition:all .12s}
+.kp:hover{background:var(--bg2);color:var(--text)}
+.kp.on{font-weight:600;color:var(--text)}
+.kp-l.on{background:var(--blue50);color:var(--blue800);border-color:var(--blue400)}
+.kp-p.on{background:var(--amber50);color:var(--amber800);border-color:var(--amber400)}
+.kp-e.on{background:var(--green50);color:var(--green800);border-color:var(--green400)}
+.kp-m.on{background:var(--purple50);color:var(--purple800);border-color:var(--purple400)}
+
+/* ── case cards ── */
+.cl{display:flex;flex-direction:column;gap:6px}
+.cc{background:var(--bg);border:1px solid var(--border);border-radius:var(--r-lg);overflow:hidden;transition:border-color .15s}
+.cc:hover{border-color:var(--border2)}
+.cc.pin-me{border-left:3px solid var(--blue400)}
+.cc.featured{border-left:3px solid var(--amber400)}
+
+.cc-hdr{display:flex;align-items:center;gap:9px;padding:11px 13px;cursor:pointer;transition:background .1s}
+.cc-hdr:hover{background:var(--bg2)}
+
+.kdot{width:7px;height:7px;border-radius:50%;flex-shrink:0}
+.kd-l{background:var(--blue400)}.kd-p{background:var(--amber400)}.kd-e{background:var(--green400)}.kd-m{background:var(--purple400)}
+
+.cc-main{flex:1;min-width:0}
+.cc-uu{font-size:13px;font-weight:600;color:var(--text);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.cc-meta{display:flex;align-items:center;gap:5px;margin-top:2px;flex-wrap:wrap}
+.cc-id{font-size:11px;color:var(--text3)}
+.bdg{font-size:10px;padding:2px 6px;border-radius:10px;font-weight:600}
+.bdg-hot{background:var(--red50);color:var(--red800)}
+.bdg-pers{background:var(--blue50);color:var(--blue800)}
+.bdg-put{background:var(--green50);color:var(--green800)}
+.bdg-bel{background:var(--bg2);color:var(--text3);border:1px solid var(--border)}
+.bdg-feat{background:var(--amber50);color:var(--amber800)}
+.bdg-pin{background:var(--blue50);color:var(--blue800)}
+
+.cc-right{display:flex;align-items:center;gap:6px;flex-shrink:0}
+.cc-sched{text-align:right;line-height:1.35}
+.cc-sched-lbl{font-size:10px;color:var(--text3);max-width:130px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.cc-sched-date{font-size:12px;font-weight:600;color:var(--amber400)}
+.cc-sched-none{font-size:11px;color:var(--text3)}
+
+.ibtns{display:flex;gap:2px}
+.ibtn{background:none;border:none;padding:4px;border-radius:6px;color:var(--text3);font-size:17px;display:flex;align-items:center;transition:color .12s,background .12s}
+.ibtn:hover{background:var(--bg2);color:var(--text)}
+.ibtn.pin-on{color:var(--blue400)}
+.chev{font-size:15px;color:var(--text3);transition:transform .2s}
+.cc.open .chev{transform:rotate(180deg)}
+
+/* ── card body ── */
+.cc-body{display:none;border-top:1px solid var(--border)}
+.cc.open .cc-body{display:block}
+
+.btabs{display:flex;border-bottom:1px solid var(--border);background:var(--bg2)}
+.btab{padding:8px 14px;font-size:12px;color:var(--text2);background:none;border:none;border-bottom:2px solid transparent;margin-bottom:-1px;transition:color .12s}
+.btab.on{color:var(--text);font-weight:600;border-bottom-color:var(--text)}
+.btab:hover:not(.on){color:var(--text)}
+
+.bpanel{display:none;padding:14px}
+.bpanel.on{display:block}
+
+/* ringkasan */
+.ringkasan-box{font-size:13px;color:var(--text2);line-height:1.7;background:var(--bg2);border-radius:var(--r-md);padding:12px 14px;margin-bottom:12px;border-left:3px solid var(--border2)}
+.ig{display:grid;grid-template-columns:1fr 1fr;gap:7px}
+.ib{background:var(--bg2);border-radius:var(--r-md);padding:8px 11px;border:1px solid var(--border)}
+.ib.full{grid-column:1/-1}
+.ib-lbl{font-size:10px;color:var(--text3);text-transform:uppercase;letter-spacing:.05em;margin-bottom:3px}
+.ib-val{font-size:12px;color:var(--text);line-height:1.5}
+
+/* norma list */
+.nrow{display:flex;gap:9px;padding:7px 0;border-top:1px solid var(--border)}
+.nrow:first-child{border-top:none}
+.n-pasal{font-size:11px;font-weight:600;color:var(--blue400);min-width:130px;flex-shrink:0;line-height:1.4;padding-top:1px}
+.n-teks{font-size:12px;color:var(--text2);line-height:1.6}
+
+/* compare */
+.cmp-wrap{display:grid;grid-template-columns:1fr 26px 1fr;gap:1px;background:var(--border);border-radius:var(--r-md);overflow:hidden}
+.cmp-col{background:var(--bg);padding:11px 12px}
+.cmp-mid{background:var(--bg2);display:flex;align-items:center;justify-content:center;font-size:14px;color:var(--text3)}
+.cmp-head{font-size:10px;font-weight:600;padding:3px 8px;border-radius:10px;margin-bottom:8px;display:inline-block}
+.ch-obj{background:var(--blue50);color:var(--blue800)}
+.ch-pet{background:var(--green50);color:var(--green800)}
+.crow{padding:6px 0;border-top:1px solid var(--border)}
+.crow:first-of-type{border-top:none}
+.crow-pasal{font-size:10px;color:var(--text3);margin-bottom:2px}
+.crow-teks{font-size:12px;color:var(--text);line-height:1.55}
+
+.mkri-btn{display:inline-flex;align-items:center;gap:4px;font-size:12px;color:var(--blue400);border:1px solid var(--blue400);padding:4px 11px;border-radius:var(--r-md);margin-top:10px;transition:background .12s}
+.mkri-btn:hover{background:var(--blue50)}
+
+/* ── agenda page ── */
+.ag-pg{display:flex;flex-direction:column;gap:1.25rem}
+.sec-title{font-size:11px;font-weight:600;color:var(--text2);text-transform:uppercase;letter-spacing:.06em;margin-bottom:8px;display:flex;align-items:center;gap:5px}
+.ag-card{background:var(--bg);border:1px solid var(--border);border-radius:var(--r-lg);padding:13px 15px;margin-bottom:6px}
+.ag-card.hot{border-color:#E24B4A}
+.ag-card.warm{border-color:#BA7517}
+.ag-card.pinned{border-left:3px solid var(--blue400)}
+.ag-top{display:flex;justify-content:space-between;align-items:start;gap:10px;margin-bottom:7px}
+.ag-nomor{font-size:13px;font-weight:600;color:var(--text)}
+.ag-uu{font-size:12px;color:var(--text2);margin-top:2px}
+.ag-right{text-align:right;flex-shrink:0}
+.ag-date{font-size:13px;font-weight:600;color:var(--text)}
+.ag-pill{font-size:11px;font-weight:600;padding:2px 8px;border-radius:10px;margin-top:3px;display:inline-block}
+.ap-hot{background:var(--red50);color:var(--red800)}
+.ap-warm{background:var(--amber50);color:var(--amber800)}
+.ap-later{background:var(--bg2);color:var(--text3);border:1px solid var(--border)}
+.ag-box{font-size:12px;color:var(--text2);background:var(--bg2);border-radius:var(--r-md);padding:6px 10px;margin-bottom:8px;border:1px solid var(--border)}
+.ag-prog-row{display:flex;align-items:center;gap:8px;margin-bottom:8px}
+.ag-prog-bg{flex:1;height:4px;background:var(--border);border-radius:2px;overflow:hidden}
+.ag-prog-fill{height:100%;border-radius:2px}
+.pf-hot{background:#E24B4A}.pf-warm{background:#BA7517}
+.ag-prog-meta{font-size:11px;color:var(--text3);min-width:70px;text-align:right}
+.ag-footer{display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:6px}
+.go-btn{display:inline-flex;align-items:center;gap:4px;font-size:12px;color:var(--text2);background:none;border:1px solid var(--border2);padding:3px 9px;border-radius:var(--r-md);transition:all .12s}
+.go-btn:hover{background:var(--bg2);color:var(--text)}
+
+/* ── pinned page ── */
+.pinned-pg{display:flex;flex-direction:column;gap:8px}
+.pin-card{background:var(--bg);border:1px solid var(--border);border-radius:var(--r-lg);padding:13px 15px}
+.pin-card.feat-pc{border-left:3px solid var(--amber400)}
+.pin-card.my-pc{border-left:3px solid var(--blue400)}
+.pin-meta{display:flex;align-items:center;gap:5px;margin-bottom:4px;flex-wrap:wrap}
+.pin-nomor{font-size:13px;font-weight:600;color:var(--text)}
+.pin-uu{font-size:12px;color:var(--text2)}
+.pin-box{font-size:12px;color:var(--text2);background:var(--bg2);border-radius:var(--r-md);padding:5px 9px;margin-top:6px;border:1px solid var(--border)}
+.pin-date{font-size:12px;font-weight:600;color:var(--amber400);margin-top:4px}
+.pin-actions{display:flex;gap:6px;margin-top:9px;flex-wrap:wrap}
+.pin-goto{display:inline-flex;align-items:center;gap:3px;font-size:12px;color:var(--blue400);background:none;border:1px solid var(--blue400);padding:3px 9px;border-radius:var(--r-md);transition:background .12s}
+.pin-goto:hover{background:var(--blue50)}
+.pin-rm{display:inline-flex;align-items:center;gap:3px;font-size:12px;color:var(--text2);background:none;border:1px solid var(--border2);padding:3px 9px;border-radius:var(--r-md);transition:background .12s}
+.pin-rm:hover{background:var(--bg2);color:var(--text)}
+
+.empty{text-align:center;padding:3rem 1rem;color:var(--text3)}
+.empty i{font-size:28px;display:block;margin-bottom:8px}
+</style>
+</head>
+<body>
+<div class="shell">
+
+  <div class="topbar">
+    <div class="brand">
+      <div class="brand-icon"><i class="ti ti-gavel"></i></div>
+      <div>
+        <div class="brand-name">Pemantau Perkara MK</div>
+        <div class="brand-sub">Uji materiil · dikurasi manual · agenda diperbarui otomatis</div>
+      </div>
+    </div>
+    <div class="upd-chip" id="upd-chip"><i class="ti ti-refresh" style="font-size:12px"></i><span id="upd-txt">Memuat…</span></div>
+  </div>
+
+  <div class="mainnav">
+    <button class="mnav on" data-pg="main" onclick="goPage('main')"><i class="ti ti-layout-list" style="font-size:14px"></i>Semua perkara</button>
+    <button class="mnav" data-pg="agenda" onclick="goPage('agenda')"><i class="ti ti-calendar-event" style="font-size:14px"></i>Agenda <span class="nc nc-w" id="nc-ag">0</span></button>
+    <button class="mnav" data-pg="pinned" onclick="goPage('pinned')"><i class="ti ti-bookmark" style="font-size:14px"></i>Dipantau <span class="nc nc-p" id="nc-pin">0</span></button>
+  </div>
+
+  <div class="page on" id="pg-main">
+    <div class="alert-strip" id="alert-strip"></div>
+    <div class="statsrow" id="statsrow"></div>
+    <div class="filterrow">
+      <input type="text" id="srch" placeholder="Cari UU, nomor perkara, pemohon…" oninput="renderMain()">
+      <select id="fstatus" onchange="renderMain()">
+        <option value="">Semua status</option>
+        <option value="hot">Segera ≤7 hari</option>
+        <option value="pers">Persidangan</option>
+        <option value="put">Putusan</option>
+        <option value="bel">Belum dijadwal</option>
+      </select>
+      <div class="kpills" id="kpills"></div>
+    </div>
+    <div class="cl" id="cl"></div>
+  </div>
+
+  <div class="page" id="pg-agenda">
+    <div class="ag-pg" id="ag-pg"></div>
+  </div>
+
+  <div class="page" id="pg-pinned">
+    <div id="pinned-pg"></div>
+  </div>
+
+</div>
+
+<script>
+const TODAY = new Date();
+TODAY.setHours(0,0,0,0);
+
+const KLUSTERS = ['Lintas','Polkam','Ekopol','MDG'];
+const KD = {Lintas:'kd-l',Polkam:'kd-p',Ekopol:'kd-e',MDG:'kd-m'};
+const KP = {Lintas:'kp-l',Polkam:'kp-p',Ekopol:'kp-e',MDG:'kp-m'};
+
+let PERKARA = [];
+let AGENDA  = {};
+let activeK = new Set(KLUSTERS);
+let openCard = null;
+let openTab  = {};
+let myPins   = new Set(JSON.parse(localStorage.getItem('mk_pins')||'[]'));
+let curPage  = 'main';
+
+function savePins(){ localStorage.setItem('mk_pins', JSON.stringify([...myPins])); }
+
+function ddiff(s){
+  if(!s || s==='Belum dijadwalkan') return null;
+  const parts = s.split('-');
+  if(parts.length !== 3) return null;
+  const d = new Date(parts[2], parts[1]-1, parts[0]);
+  if(isNaN(d)) return null;
+  return Math.round((d - TODAY) / 86400000);
+}
+
+function fdate(s){
+  if(!s || s==='Belum dijadwalkan') return 'Belum dijadwalkan';
+  const parts = s.split('-');
+  if(parts.length !== 3) return s;
+  const months = ['Jan','Feb','Mar','Apr','Mei','Jun','Jul','Ags','Sep','Okt','Nov','Des'];
+  return `${parseInt(parts[0])} ${months[parseInt(parts[1])-1]} ${parts[2]}`;
+}
+
+function mergedPerkara(){
+  return PERKARA.map(p => {
+    const ag = AGENDA[p.id] || {};
+    return { ...p,
+      agendaLast: ag.agenda_terakhir || '',
+      tglLast:    ag.tgl_terakhir    || '',
+      agendaNext: ag.agenda_selanjutnya || '',
+      tglNext:    ag.tgl_selanjutnya    || ''
+    };
+  });
+}
+
+function getStatus(c){
+  if(c.agendaNext && c.agendaNext.toLowerCase().includes('putusan')) return 'put';
+  const d = ddiff(c.tglNext);
+  if(d === null) return 'bel';
+  if(d >= 0 && d <= 7)  return 'hot';
+  if(d >= 0) return 'pers';
+  return 'bel';
+}
+
+function statusBdg(c){
+  const s = getStatus(c);
+  if(s==='hot')  return '<span class="bdg bdg-hot">Segera</span>';
+  if(s==='put')  return '<span class="bdg bdg-put">Putusan</span>';
+  if(s==='pers') return '<span class="bdg bdg-pers">Persidangan</span>';
+  return '<span class="bdg bdg-bel">Belum dijadwal</span>';
+}
+
+async function loadData(){
+  try {
+    const [rp, ra] = await Promise.all([fetch('data-perkara.json'), fetch('data-agenda.json')]);
+    const dp = await rp.json();
+    const da = await ra.json();
+    PERKARA = dp.perkara;
+    AGENDA  = da.agenda;
+    const upd = da.last_updated ? new Date(da.last_updated).toLocaleDateString('id-ID',{day:'numeric',month:'short',year:'numeric'}) : '—';
+    document.getElementById('upd-txt').textContent = 'Agenda: ' + upd;
+  } catch(e){
+    document.getElementById('upd-txt').textContent = 'Gagal memuat data';
+    console.error(e);
+  }
+  buildKpills();
+  renderAlerts();
+  renderStats();
+  renderMain();
+  updateBadges();
+}
+
+function goPage(p){
+  curPage = p;
+  document.querySelectorAll('.page').forEach(el => el.classList.remove('on'));
+  document.getElementById('pg-'+p).classList.add('on');
+  document.querySelectorAll('.mnav').forEach(el => el.classList.remove('on'));
+  document.querySelector(`[data-pg="${p}"]`).classList.add('on');
+  if(p==='agenda') renderAgenda();
+  if(p==='pinned') renderPinned();
+}
+
+function buildKpills(){
+  document.getElementById('kpills').innerHTML = KLUSTERS.map(k =>
+    `<button class="kp ${KP[k]}${activeK.has(k)?' on':''}" onclick="toggleK('${k}')">${k}</button>`
+  ).join('');
+}
+
+function toggleK(k){
+  if(activeK.has(k)){ if(activeK.size > 1) activeK.delete(k); }
+  else activeK.add(k);
+  buildKpills(); renderMain();
+}
+
+function updateBadges(){
+  const data = mergedPerkara();
+  const up = data.filter(c => { const d=ddiff(c.tglNext); return d!==null && d>=0 && d<=30; });
+  document.getElementById('nc-ag').textContent  = up.length;
+  const pinCount = myPins.size + data.filter(c=>c.featured).length;
+  document.getElementById('nc-pin').textContent = pinCount;
+}
+
+function renderAlerts(){
+  const data = mergedPerkara();
+  const urgent = data.filter(c => { const d=ddiff(c.tglNext); return d!==null && d>=0 && d<=20; })
+    .sort((a,b) => ddiff(a.tglNext) - ddiff(b.tglNext));
+  const el = document.getElementById('alert-strip');
+  if(!urgent.length){ el.innerHTML=''; return; }
+  el.innerHTML = urgent.map(c => {
+    const d   = ddiff(c.tglNext);
+    const lvl = d<=7 ? 'hot' : 'warm';
+    const pct = Math.round(Math.max(0,(20-d)/20*100));
+    return `<div class="a-row a-${lvl}" onclick="openDirect('${c.id}')">
+      <span class="a-nomor">${c.id}</span>
+      <span class="a-info">${c.agendaNext||'—'}</span>
+      <div class="a-prog"><div class="a-bg"><div class="a-fill-${lvl}" style="width:${pct}%"></div></div></div>
+      <span class="a-days">${d===0?'Hari ini':d+' hr'}</span>
+    </div>`;
+  }).join('');
+}
+
+function renderStats(){
+  const data = mergedPerkara();
+  const tot  = data.length;
+  const pers = data.filter(c=>getStatus(c)==='pers').length;
+  const put  = data.filter(c=>getStatus(c)==='put').length;
+  const hot  = data.filter(c=>getStatus(c)==='hot').length;
+  document.getElementById('statsrow').innerHTML = `
+    <div class="sc"><div class="sc-v">${tot}</div><div class="sc-l">Total perkara</div></div>
+    <div class="sc"><div class="sc-v">${pers}</div><div class="sc-l">Persidangan aktif</div></div>
+    <div class="sc"><div class="sc-v">${put}</div><div class="sc-l">Menuju putusan</div></div>
+    <div class="sc"><div class="sc-v">${hot}</div><div class="sc-l">Segera (≤7 hari)</div></div>`;
+}
+
+function renderMain(){
+  const q  = (document.getElementById('srch').value||'').toLowerCase();
+  const fs = document.getElementById('fstatus').value;
+  const data = mergedPerkara().filter(c => {
+    if(!activeK.has(c.kluster)) return false;
+    if(q && !c.uu.toLowerCase().includes(q) && !c.id.toLowerCase().includes(q) && !(c.pemohon||'').toLowerCase().includes(q)) return false;
+    if(fs && getStatus(c) !== fs) return false;
+    return true;
+  });
+  const el = document.getElementById('cl');
+  if(!data.length){ el.innerHTML='<div class="empty"><i class="ti ti-inbox"></i>Tidak ada perkara ditemukan</div>'; return; }
+  el.innerHTML = data.map(c => cardHTML(c)).join('');
+}
+
+function cardHTML(c){
+  const isOpen  = openCard === c.id;
+  const tab     = openTab[c.id] || 'summary';
+  const isPinMe = myPins.has(c.id);
+  const d       = ddiff(c.tglNext);
+  const dateHtml = c.tglNext && c.tglNext !== 'Belum dijadwalkan'
+    ? `<span class="cc-sched-date">${fdate(c.tglNext)}</span>`
+    : `<span class="cc-sched-none">Belum dijadwal</span>`;
+  const lblShort = c.agendaNext ? (c.agendaNext.length>32?c.agendaNext.slice(0,32)+'…':c.agendaNext) : '';
+
+  let bodyHTML = '';
+  if(isOpen){
+    if(tab==='summary'){
+      bodyHTML = `
+        ${c.ringkasan ? `<div class="ringkasan-box">${c.ringkasan}</div>` : ''}
+        <div class="ig">
+          <div class="ib"><div class="ib-lbl">Agenda terakhir</div><div class="ib-val">${c.agendaLast||'—'}<br><small style="color:var(--text3)">${fdate(c.tglLast)}</small></div></div>
+          <div class="ib"><div class="ib-lbl">Agenda selanjutnya</div><div class="ib-val">${c.agendaNext||'—'}<br><small style="color:var(--text3)">${fdate(c.tglNext)}</small></div></div>
+          <div class="ib full"><div class="ib-lbl">Pemohon</div><div class="ib-val">${c.pemohon||'—'}</div></div>
+          <div class="ib full"><div class="ib-lbl">Batu uji</div><div class="ib-val">${c.batu_uji||'—'}</div></div>
+        </div>`;
+    } else if(tab==='norma'){
+      bodyHTML = c.objek_petitum.map(o =>
+        `<div class="nrow"><span class="n-pasal">${o.pasal}</span><span class="n-teks">${o.ringkasan_norma}</span></div>`
+      ).join('');
+    } else if(tab==='compare'){
+      bodyHTML = `<div class="cmp-wrap">
+        <div class="cmp-col">
+          <span class="cmp-head ch-obj"><i class="ti ti-file-text" style="font-size:11px;margin-right:3px"></i>Norma yang diuji</span>
+          ${c.objek_petitum.map(o=>`<div class="crow"><div class="crow-pasal">${o.pasal}</div><div class="crow-teks">${o.objek_verbatim}</div></div>`).join('')}
+        </div>
+        <div class="cmp-mid"><i class="ti ti-arrows-right-left"></i></div>
+        <div class="cmp-col">
+          <span class="cmp-head ch-pet"><i class="ti ti-scale" style="font-size:11px;margin-right:3px"></i>Petitum pemohon</span>
+          ${c.objek_petitum.map(o=>`<div class="crow"><div class="crow-pasal">${o.pasal}</div><div class="crow-teks">${o.petitum_verbatim}</div></div>`).join('')}
+        </div>
+      </div>`;
+    }
+  }
+
+  return `<div class="cc${isOpen?' open':''}${isPinMe?' pin-me':''}${c.featured?' featured':''}" id="cc-${c.id.replace(/[\/]/g,'-')}">
+    <div class="cc-hdr" onclick="toggleCC('${c.id}')">
+      <span class="kdot ${KD[c.kluster]}" title="${c.kluster}"></span>
+      <div class="cc-main">
+        <div class="cc-uu">${c.uu}</div>
+        <div class="cc-meta">
+          <span class="cc-id">${c.id}</span>
+          ${statusBdg(c)}
+          ${c.featured ? '<span class="bdg bdg-feat"><i class="ti ti-star" style="font-size:10px;margin-right:2px"></i>Prioritas</span>' : ''}
+          ${isPinMe ? '<span class="bdg bdg-pin"><i class="ti ti-bookmark" style="font-size:10px;margin-right:2px"></i>Dipantau</span>' : ''}
+        </div>
+      </div>
+      <div class="cc-right">
+        <div class="cc-sched">
+          <div class="cc-sched-lbl">${lblShort}</div>
+          ${dateHtml}
+        </div>
+        <div class="ibtns">
+          <button class="ibtn${isPinMe?' pin-on':''}" onclick="togglePin(event,'${c.id}')" title="${isPinMe?'Hapus dari pantauan':'Tambah ke pantauan'}"><i class="ti ti-bookmark"></i></button>
+        </div>
+        <i class="ti ti-chevron-down chev"></i>
+      </div>
+    </div>
+    ${isOpen ? `<div class="cc-body">
+      <div class="btabs">
+        <button class="btab${tab==='summary'?' on':''}" onclick="setTab(event,'${c.id}','summary')">Ringkasan</button>
+        <button class="btab${tab==='norma'?' on':''}" onclick="setTab(event,'${c.id}','norma')">Norma yang diuji</button>
+        <button class="btab${tab==='compare'?' on':''}" onclick="setTab(event,'${c.id}','compare')">Norma vs Petitum</button>
+      </div>
+      <div class="bpanel on">${bodyHTML}</div>
+      <div style="padding:0 14px 14px">
+        <a class="mkri-btn" href="https://tracking.mkri.id/index.php?page=web.TrackPerkara&id=${encodeURIComponent(c.id)}" target="_blank" onclick="event.stopPropagation()">
+          <i class="ti ti-external-link" style="font-size:12px"></i>Lacak di MKRI
+        </a>
+      </div>
+    </div>` : ''}
+  </div>`;
+}
+
+function toggleCC(id){ openCard = openCard===id ? null : id; renderMain(); }
+function setTab(e,id,tab){ e.stopPropagation(); openTab[id]=tab; renderMain(); }
+function togglePin(e,id){
+  e.stopPropagation();
+  if(myPins.has(id)) myPins.delete(id); else myPins.add(id);
+  savePins(); updateBadges(); renderMain();
+  if(curPage==='pinned') renderPinned();
+}
+function openDirect(id){
+  openCard = id;
+  goPage('main');
+  setTimeout(()=>{ const el=document.getElementById('cc-'+id.replace(/\//g,'-')); if(el) el.scrollIntoView({behavior:'smooth',block:'start'}); }, 80);
+}
+
+function renderAgenda(){
+  const data = mergedPerkara().filter(c => { const d=ddiff(c.tglNext); return d!==null && d>=0; })
+    .sort((a,b) => ddiff(a.tglNext) - ddiff(b.tglNext));
+  const pg = document.getElementById('ag-pg');
+  if(!data.length){ pg.innerHTML='<div class="empty"><i class="ti ti-calendar-off"></i>Tidak ada agenda mendatang</div>'; return; }
+
+  function sec(arr, title, icon){
+    if(!arr.length) return '';
+    return `<div><div class="sec-title"><i class="ti ti-${icon}" style="font-size:13px"></i>${title}</div>
+    ${arr.map(c => {
+      const d   = ddiff(c.tglNext);
+      const lvl = d<=7?'hot':d<=30?'warm':'later';
+      const pct = Math.min(100, Math.round(Math.max(0,(60-d)/60*100)));
+      const isPinMe = myPins.has(c.id);
+      return `<div class="ag-card ${lvl}${isPinMe?' pinned':''}">
+        <div class="ag-top">
+          <div><div class="ag-nomor">${c.id}</div><div class="ag-uu">${c.uu}</div></div>
+          <div class="ag-right">
+            <div class="ag-date">${fdate(c.tglNext)}</div>
+            <span class="ag-pill ap-${lvl}">${d===0?'Hari ini':d+' hari lagi'}</span>
+          </div>
+        </div>
+        <div class="ag-box">${c.agendaNext||'—'}</div>
+        <div class="ag-prog-row">
+          <div class="ag-prog-bg"><div class="ag-prog-fill${lvl!=='later'?' pf-'+lvl:''}" style="width:${pct}%;background:${lvl==='later'?'var(--border2)':''}"></div></div>
+          <span class="ag-prog-meta">${c.kluster}</span>
+        </div>
+        <div class="ag-footer">
+          <button class="go-btn" onclick="openDirect('${c.id}')"><i class="ti ti-arrow-right" style="font-size:12px"></i>Detail & bandingkan</button>
+          <div style="display:flex;gap:5px;align-items:center">${statusBdg(c)}${isPinMe?'<span class="bdg bdg-pin"><i class="ti ti-bookmark" style="font-size:10px;margin-right:2px"></i>Dipantau</span>':''}</div>
+        </div>
+      </div>`;
+    }).join('')}</div>`;
+  }
+
+  pg.innerHTML =
+    sec(data.filter(c=>ddiff(c.tglNext)<=7),   'Segera (≤7 hari)',    'alert-triangle') +
+    sec(data.filter(c=>{const d=ddiff(c.tglNext);return d>7&&d<=30;}), 'Dalam 30 hari', 'calendar') +
+    sec(data.filter(c=>ddiff(c.tglNext)>30),   'Lebih dari 30 hari',  'calendar-stats');
+}
+
+function renderPinned(){
+  const data = mergedPerkara();
+  const featured = data.filter(c=>c.featured);
+  const myList   = [...myPins].map(id=>data.find(c=>c.id===id)).filter(Boolean).filter(c=>!c.featured);
+  const pg = document.getElementById('pinned-pg');
+
+  if(!featured.length && !myList.length){
+    pg.innerHTML = `<div class="empty"><i class="ti ti-bookmark"></i>Belum ada perkara yang dipantau.<br><small style="margin-top:4px;display:block">Klik ikon <i class="ti ti-bookmark"></i> pada kartu perkara untuk menambahkan ke pantauan pribadi.</small></div>`;
+    return;
+  }
+
+  function pinCard(c, type){
+    const d = ddiff(c.tglNext);
+    return `<div class="pin-card ${type}-pc">
+      <div class="pin-meta">
+        <span class="kdot ${KD[c.kluster]}"></span>
+        <span style="font-size:11px;color:var(--text3)">${c.kluster}</span>
+        ${statusBdg(c)}
+        ${type==='feat'?'<span class="bdg bdg-feat"><i class="ti ti-star" style="font-size:10px;margin-right:2px"></i>Prioritas</span>':''}
+      </div>
+      <div class="pin-nomor">${c.id}</div>
+      <div class="pin-uu">${c.uu}</div>
+      <div class="pin-box">${c.agendaNext||'Belum ada jadwal'}</div>
+      ${c.tglNext && c.tglNext!=='Belum dijadwalkan'
+        ? `<div class="pin-date"><i class="ti ti-calendar" style="font-size:12px;margin-right:3px"></i>${fdate(c.tglNext)}${d!==null&&d>=0?` · ${d===0?'Hari ini':d+' hari lagi'}`:''}
+          </div>` : ''}
+      <div class="pin-actions">
+        <button class="pin-goto" onclick="openDirect('${c.id}')"><i class="ti ti-arrow-right" style="font-size:12px"></i>Detail & bandingkan</button>
+        ${type==='my'?`<button class="pin-rm" onclick="togglePin({stopPropagation:()=>{}}, '${c.id}')"><i class="ti ti-bookmark-off" style="font-size:12px"></i>Hapus pantauan</button>`:''}
+      </div>
+    </div>`;
+  }
+
+  let html = '<div class="pinned-pg">';
+  if(featured.length){
+    html += `<div><div class="sec-title"><i class="ti ti-star" style="font-size:13px;color:var(--amber400)"></i>Perkara prioritas (dikurasi)</div>
+    ${featured.map(c=>pinCard(c,'feat')).join('')}</div>`;
+  }
+  if(myList.length){
+    html += `<div style="margin-top:${featured.length?'1.25rem':'0'}">
+    <div class="sec-title"><i class="ti ti-bookmark" style="font-size:13px;color:var(--blue400)"></i>Pantauan saya</div>
+    ${myList.map(c=>pinCard(c,'my')).join('')}</div>`;
+  } else if(featured.length){
+    html += `<div style="margin-top:1rem;text-align:center;color:var(--text3);font-size:13px;padding:1rem">
+      Belum ada pantauan pribadi. Klik <i class="ti ti-bookmark"></i> pada kartu perkara untuk menambahkan.
+    </div>`;
+  }
+  html += '</div>';
+  pg.innerHTML = html;
+}
+
+loadData();
+</script>
+</body>
+</html>
