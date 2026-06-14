@@ -2,8 +2,11 @@ name: Update Agenda Perkara MK
 
 on:
   schedule:
-    - cron: '0 20 * * 0'
-  workflow_dispatch:
+    - cron: '0 20 * * 0'   # Minggu pukul 03:00 WIB (UTC+7)
+  workflow_dispatch:         # bisa dijalankan manual dari GitHub
+
+permissions:
+  contents: write
 
 jobs:
   scrape:
