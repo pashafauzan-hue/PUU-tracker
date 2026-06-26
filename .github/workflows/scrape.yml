@@ -2,8 +2,8 @@ name: Update Agenda Perkara MK
 
 on:
   schedule:
-    - cron: '0 20 * * 0'   # Minggu pukul 03:00 WIB (UTC+7)
-  workflow_dispatch:         # bisa dijalankan manual dari GitHub
+    - cron: '0 20 * * 0'
+  workflow_dispatch:
 
 permissions:
   contents: write
@@ -11,7 +11,6 @@ permissions:
 jobs:
   scrape:
     runs-on: ubuntu-latest
-
     steps:
       - name: Checkout repo
         uses: actions/checkout@v4
@@ -21,14 +20,22 @@ jobs:
         with:
           python-version: '3.11'
 
-      - name: Install dependencies
+      - name: Install Xvfb (virtual display untuk headless=False)
+        run: |
+          sudo apt-get update -qq
+          sudo apt-get install -y xvfb
+
+      - name: Install Python dependencies
         run: |
           pip install playwright beautifulsoup4 openpyxl
           playwright install chromium
           playwright install-deps chromium
 
-      - name: Jalankan scraper
-        run: python scraper.py
+      - name: Jalankan scraper dengan virtual display
+        env:
+          SUPABASE_URL: ${{ secrets.SUPABASE_URL }}
+          SUPABASE_KEY: ${{ secrets.SUPABASE_KEY }}
+        run: xvfb-run --server-args="-screen 0 1280x720x24 -ac" python scraper.py
 
       - name: Commit dan push data-agenda.json
         run: |
